@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -21,6 +21,7 @@ module.exports = {
           background: "#121212", // Dark background color
           text: "#FFFFFF", // Dark text color
           accent: "#FFD700", // Dark accent color
+          delete: "#FF0000",
         },
         light: {
           primary: "#007BFF", // Light primary color
@@ -28,6 +29,7 @@ module.exports = {
           background: "#FFFFFF", // Light background color
           text: "#333333", // Light text color
           accent: "#FFA500", // Light accent color
+          delete: "#DC143C",
         },
       },
     },

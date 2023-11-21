@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .icon {
+    @apply  text-xl;
+  }
+
+  .btn {
+    @apply hover:no-underline tracking-wider w-full text-center cursor-pointer px-6 py-2 rounded-md transition-colors block uppercase;
+  }
+}
+
+@layer components {
+  .icon {
+    @apply  text-xl; 
+  }
+
+  .btn {
+    @apply hover:no-underline tracking-wider w-full text-center cursor-pointer px-6 py-2 rounded-md transition-colors block uppercase;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
