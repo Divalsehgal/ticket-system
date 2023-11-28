@@ -47,8 +47,12 @@ function TicketForm() {
     console.log("submitted ");
   };
   return (
-    <div className="flex flex-center ">
-      <form action="" className="flex flex-col gap-2" onSubmit={handleSubmit}>
+    <div className="flex flex-center justify-center w-full">
+      <form
+        action=""
+        className="flex flex-col gap-2 w-2/4 p-4 border-cyan-500 border-2 rounded "
+        onSubmit={handleSubmit}
+      >
         <h3>Create your Ticket</h3>
         <label htmlFor="">Title</label>
         <input
