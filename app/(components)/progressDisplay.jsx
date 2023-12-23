@@ -1,11 +1,9 @@
-import React from 'react'
-
-function ProgressDisplay() {
+const ProgressDisplay = ({ progress }) => {
   return (
-    <div className="w-full bg-light-background dark:bg-light-primary rounded-full h-2.5 ">
+    <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
       <div
-        className="rounded-full bg-light-primary h-2.5  dark:bg-light-accent"
-        style={{ width: "75%" }}
+        className="bg-blue-600 h-2.5 rounded-full"
+        style={{ width: `${progress}%` }}
       ></div>
     </div>
   );

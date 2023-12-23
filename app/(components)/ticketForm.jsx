@@ -150,7 +150,7 @@ function TicketForm() {
           name="progress"
         />
         <label>Status</label>
-        <select name="category" value={formData.status} onChange={handleChange}>
+        <select name="status" value={formData.status} onChange={handleChange}>
           <option value="not started">Not Started</option>
           <option value="started">Started</option>
           <option value="done">Done</option>

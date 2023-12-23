@@ -1,9 +1,9 @@
 import React from 'react'
 
-function TicketTitle() {
+function TicketTitle({title}) {
   return (
     <div>
-      <h1>Ticket Title</h1>
+      <h1>{title}</h1>
     </div>
   )
 }
