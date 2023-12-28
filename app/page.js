@@ -7,7 +7,7 @@ const getTickets = async () => {
       cache: "no-store",
     });
 
-    if (!res.ok) {
+    if (!res.ok) { 
       throw new Error("Failed to fetch topics");
     }
 
@@ -20,16 +20,18 @@ const getTickets = async () => {
 const Dashboard = async () => {
   const data = await getTickets();
 
+  console.log(data)
+
   // Make sure we have tickets needed for production build.
-  if (!data?.tickets) {
-    return <p>No tickets.</p>;
+  if (data?.tickets.length === 0) {
+    return <p>No tickets.</p>; 
   }
 
   const tickets = data.tickets;
 
   const uniqueCategories = [
-    ...new Set(tickets?.map(({ category }) => category)),
-  ];
+    ...new Set(tickets?.map(({ category }) => category)), 
+  ]; 
 
   return (
     <div className="p-5">
