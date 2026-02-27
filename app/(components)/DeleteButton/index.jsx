@@ -1,11 +1,10 @@
-
 "use client";
 
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
 
-const DeleteBlock = ({ id }) => {
+const DeleteButton = ({ id }) => {
   const router = useRouter();
 
   const deleteTicket = async () => {
@@ -20,10 +19,11 @@ const DeleteBlock = ({ id }) => {
   return (
     <FontAwesomeIcon
       icon={faX}
-      className=" text-red-400 hover:cursor-pointer hover:text-red-200"
+      className="btn-delete cursor-pointer"
       onClick={deleteTicket}
+      title="Delete Ticket"
     />
   );
 };
 
-export default DeleteBlock;
+export default DeleteButton;

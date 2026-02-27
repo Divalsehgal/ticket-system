@@ -1,4 +1,4 @@
-import EditTicketForm from "@/app/(components)/EditTicketForm";
+import EditTicketForm from "@/app/(components)/TicketForm";
 
 const getTicketById = async (id) => {
   try {
@@ -16,17 +16,15 @@ const getTicketById = async (id) => {
   }
 };
 
-let updateTicketData = {};
 const TicketPage = async ({ params }) => {
-  const EDITMODE = params.id === "new" ? false : true;
+  const EDITMODE = params.id !== "new";
+  let updateTicketData;
 
   if (EDITMODE) {
-    updateTicketData = await getTicketById(params.id);
-    updateTicketData = updateTicketData.foundTicket;
+    const ticketRes = await getTicketById(params.id);
+    updateTicketData = ticketRes?.foundTicket || {};
   } else {
-    updateTicketData = {
-      _id: "new",
-    };
+    updateTicketData = { _id: "new" };
   }
 
   return <EditTicketForm ticket={updateTicketData} />;

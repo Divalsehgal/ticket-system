@@ -1,4 +1,4 @@
-import Nav from "./(components)/Nav";
+import Nav from "./(components)/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -18,12 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col h-screen max-h-screen">
+        <div className="flex flex-col min-h-screen bg-[var(--bg)] text-[var(--text)]">
           <Nav />
-
-          <div className="flex-grow overflow-y-auto bg-page text-default-text">
+          <main className="flex-grow overflow-y-auto px-4 py-6 md:px-8 bg-[var(--bg)] text-[var(--text)]">
             {children}
-          </div>
+          </main>
         </div>
       </body>
     </html>

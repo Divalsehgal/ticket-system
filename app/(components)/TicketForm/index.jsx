@@ -1,4 +1,5 @@
 "use client";
+import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -62,8 +63,7 @@ const EditTicketForm = ({ ticket }) => {
     }
 
     router.refresh();
-
-    router.push("/");
+    router.push("/tickets");
   };
 
   const categories = [
@@ -74,34 +74,39 @@ const EditTicketForm = ({ ticket }) => {
   ];
 
   return (
-    <div className=" flex justify-center">
+    <div className="flex justify-center">
       <form
         onSubmit={handleSubmit}
         method="post"
-        className="flex flex-col gap-3 w-1/2"
+        className="flex flex-col gap-4 w-full max-w-xl bg-[var(--surface)] p-8 rounded-card shadow-card border border-[var(--border)]"
       >
-        <h3>{EDITMODE ? "Update Your Ticket" : "Create New Ticket"}</h3>
-        <label>Title</label>
+        <h3 className="text-xl font-semibold mb-2 text-[var(--primary)]">
+          {EDITMODE ? "Update Your Ticket" : "Create New Ticket"}
+        </h3>
+        <label className="font-medium">Title</label>
         <input
           id="title"
           name="title"
           type="text"
+          className="input"
           onChange={handleChange}
           required={true}
           value={formData.title}
         />
-        <label>Description</label>
+        <label className="font-medium">Description</label>
         <textarea
           id="description"
           name="description"
+          className="input"
           onChange={handleChange}
           required={true}
           value={formData.description}
           rows="5"
         />
-        <label>Category</label>
+        <label className="font-medium">Category</label>
         <select
           name="category"
+          className="input"
           value={formData.category}
           onChange={handleChange}
         >
@@ -112,75 +117,60 @@ const EditTicketForm = ({ ticket }) => {
           ))}
         </select>
 
-        <label>Priority</label>
-        <div>
-          <input
-            id="priority-1"
-            name="priority"
-            type="radio"
-            onChange={handleChange}
-            value={1}
-            checked={formData.priority == 1}
-          />
-          <label>1</label>
-          <input
-            id="priority-2"
-            name="priority"
-            type="radio"
-            onChange={handleChange}
-            value={2}
-            checked={formData.priority == 2}
-          />
-          <label>2</label>
-          <input
-            id="priority-3"
-            name="priority"
-            type="radio"
-            onChange={handleChange}
-            value={3}
-            checked={formData.priority == 3}
-          />
-          <label>3</label>
-          <input
-            id="priority-4"
-            name="priority"
-            type="radio"
-            onChange={handleChange}
-            value={4}
-            checked={formData.priority == 4}
-          />
-          <label>4</label>
-          <input
-            id="priority-5"
-            name="priority"
-            type="radio"
-            onChange={handleChange}
-            value={5}
-            checked={formData.priority == 5}
-          />
-          <label>5</label>
+        <label className="font-medium">Priority</label>
+        <div className="flex gap-3 items-center mb-2">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <label key={n} className="flex flex-col items-center text-xs">
+              <input
+                id={`priority-${n}`}
+                name="priority"
+                type="radio"
+                className="accent-orange-500"
+                onChange={handleChange}
+                value={n}
+                checked={formData.priority == n}
+              />
+              {n}
+            </label>
+          ))}
         </div>
-        <label>Progress</label>
+        <label className="font-medium">Progress</label>
         <input
           type="range"
           id="progress"
           name="progress"
+          className="w-full accent-[var(--primary)]"
           value={formData.progress}
           min="0"
           max="100"
           onChange={handleChange}
         />
-        <label>Status</label>
-        <select name="status" value={formData.status} onChange={handleChange}>
+        <label className="font-medium">Status</label>
+        <select
+          name="status"
+          className="input"
+          value={formData.status}
+          onChange={handleChange}
+        >
           <option value="not started">Not Started</option>
           <option value="started">Started</option>
           <option value="done">Done</option>
         </select>
-        <input
+        <button
           type="submit"
-          className="btn max-w-xs"
-          value={EDITMODE ? "Update Ticket" : "Create Ticket"}
-        />
+          className={clsx("btn  mt-4 font-semibold", "btn-primary")}
+        >
+          {EDITMODE ? "Update Ticket" : "Create Ticket"}
+        </button>
+
+        {/* Example of a text variant button for secondary actions */}
+
+        <button
+          type="button"
+          className="btn-text text-[var(--primary)] hover:underline hover:text-[var(--accent)] focus:outline-none focus:underline px-2 py-1 font-medium transition-all duration-150"
+        >
+          Cancel
+        </button>
       </form>
     </div>
   );
